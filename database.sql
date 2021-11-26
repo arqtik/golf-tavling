@@ -3,15 +3,15 @@ CREATE DATABASE GolfTävling;
 USE GolfTävling;
 
 create table spelare(
-  pnr char(13),
-  namn varchar(20),
-  ålder smallint,
-  primary key(pnr)
+	pnr char(13),
+	namn varchar(20),
+    ålder smallint,
+    primary key(pnr)
 )engine=innodb;
 
 create table jacka(
 	initialer char(2),
-  storlek varchar(10),
+    storlek varchar(10),
     material varchar(100),
     pnr char(13),
     primary key(pnr, material),
@@ -29,9 +29,8 @@ create table klubba(
     material varchar(80),
     konstruktionNr varchar(100),
     pnr char(13),
-    primary key(pnr, konstruktionNr, nr),
-    foreign key(pnr) references spelare(pnr),
-    foreign key(konstruktionNr) references konstruktion(serialNr)
+    primary key(pnr, nr),
+    foreign key(pnr) references spelare(pnr)
 )engine=innodb;
 
 create table tävling(
@@ -91,5 +90,3 @@ insert into klubba values
 #select * from spelare where ålder < 30;
 #delete from jacka where pnr = "19941122-6386";
 #select avg(ålder) from spelare;
-
-
